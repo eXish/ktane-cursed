@@ -202,7 +202,7 @@ public class CursedScript : MonoBehaviour {
     {
         int attempts = 0;
         Debug.LogFormat("<Cursed #{0}> Attempting to obscure the Bomb Timer Modifier strike display...", moduleId);
-        tryAgain2:
+        tryAgain:
         yield return null;
         try
         {
@@ -214,7 +214,7 @@ public class CursedScript : MonoBehaviour {
             if (attempts < 5)
             {
                 attempts++;
-                goto tryAgain2;
+                goto tryAgain;
             }
             Debug.LogFormat("<Cursed #{0}> Failed to obscure the Bomb Timer Modifier strike display", moduleId);
         }
