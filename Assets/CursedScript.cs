@@ -201,35 +201,12 @@ public class CursedScript : MonoBehaviour {
     IEnumerator AttemptObscureBTM()
     {
         int attempts = 0;
-        Debug.LogFormat("<Cursed #{0}> Attempting to obscure the Bomb Timer Modifier (TestHarness ver.) strike text...", moduleId);
-        tryAgain:
-        yield return null;
-        try
-        {
-            TextMesh btmStrikeText = transform.parent.Find("THTimerModule(Clone)/Strike_Screen/Strikes Text").GetComponent<TextMesh>();
-            TextMesh btmStrikeTextClone = Instantiate(btmStrikeText, btmStrikeText.transform.parent);
-            btmStrikeTextClone.transform.localPosition = btmStrikeText.transform.localPosition;
-            btmStrikeTextClone.transform.SetAsFirstSibling();
-            btmStrikeText.gameObject.SetActive(false);
-            btmStrikeTextClone.text = "?";
-            Debug.LogFormat("<Cursed #{0}> Successfully obscured the Bomb Timer Modifier (TestHarness ver.) strike text", moduleId);
-        }
-        catch (NullReferenceException)
-        {
-            if (attempts < 5)
-            {
-                attempts++;
-                goto tryAgain;
-            }
-            Debug.LogFormat("<Cursed #{0}> Failed to obscure the Bomb Timer Modifier (TestHarness ver.) strike text", moduleId);
-        }
         Debug.LogFormat("<Cursed #{0}> Attempting to obscure the Bomb Timer Modifier strike display...", moduleId);
-        attempts = 0;
         tryAgain2:
         yield return null;
         try
         {
-            transform.parent.Find("DefaultTimerModified(Clone)/StrikeThings").gameObject.SetActive(false);
+            transform.parent.Find("TimerV2(Clone)/Canvas/Strikes").gameObject.SetActive(false);
             Debug.LogFormat("<Cursed #{0}> Successfully obscured the Bomb Timer Modifier strike display", moduleId);
         }
         catch (NullReferenceException)
